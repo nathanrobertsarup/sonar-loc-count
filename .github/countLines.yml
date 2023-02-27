@@ -1,0 +1,17 @@
+name: countLines
+
+on:
+  workflow_dispatch:
+    inputs:
+      repoName:
+        required: true
+
+jobs:
+  resharperAnnotate:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - run: github_com.sh nathanrobertsarup ${{ secrets.PAT }} arup-group ${{ github.event.inputs.repoName }}
